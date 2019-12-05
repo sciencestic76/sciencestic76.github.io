@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bouncing Box</title>
+	<script src="jquery.min.js"></script>
+
+<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+	<!-- BEGIN CSS -->
+	<style>
+		/* TODO 1 */
+		
+        body {
+            background-image: url("http://orig10.deviantart.net/5a4e/f/2015/072/8/a/naruto_uzumaki_by_genzoman-d8ll22q.jpg");
+        }
+		
+		.box {
+			width: 75px;
+			height: 75px;
+			background-color: White;
+			font-size: 300%;
+			text-align: center;
+			display: block;
+			position: absolute;
+			top: 75px;
+			left: 0;
+		}
+	</style>
+
+</head>
+<body class="board">
+	<!-- HTML for the box -->
+	<div class="box">?</div>
+
+	<!-- BEGIN JAVASCRIPT -->
+	<script>
+		(function(){
+			'use strict';
+			/* global jQuery */
+
+			// jQuery stuff setup for you
+			var box = jQuery('.box');
+			var boardWidth = jQuery('.board').width();
+			var position = 0;
+			var points = 0;
+			var speed = 10;
+			var direction = 1;
+			var distance = 0;            // distance is infinite since its bouncing back and fourth
+			
+			box.css('left', position);   // set the 'left' CSS property of the box to the new value of position
+			box.text(points);
+
+			
+    		function update() {
+                position += speed * direction;    
+                console.log("new position: " + position);
+        
+                if(position > boardWidth) {
+                    direction = -1;
+                }
+    
+                if(position < 0){
+                    direction = 1;
+                    
+                }
+    
+                box.css('left', position);  
+            }
+
+
+			function handleBoxClick() {
+    			points += 1;
+    			box.text(points);
+    			position = 0;
+    			speed +=5;
+				
+			}
+
+
+			//this executes the update function code every 50 milliseconds
+			setInterval(update, 30);
+			// this executes the handleBoxClick function code every time the box is clicked on
+			box.on('click', handleBoxClick);
+	
+		})();
+	</script>
+</body>
+</html>
