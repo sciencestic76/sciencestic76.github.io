@@ -10,11 +10,11 @@
 	<!-- BEGIN CSS -->
 	<style>
 		/* TODO 1 */
-		
+
         body {
             background-image: url("http://orig10.deviantart.net/5a4e/f/2015/072/8/a/naruto_uzumaki_by_genzoman-d8ll22q.jpg");
         }
-		
+
 		.box {
 			width: 75px;
 			height: 75px;
@@ -47,25 +47,25 @@
 			var speed = 10;
 			var direction = 1;
 			var distance = 0;            // distance is infinite since its bouncing back and fourth
-			
+
 			box.css('left', position);   // set the 'left' CSS property of the box to the new value of position
 			box.text(points);
 
-			
+
     		function update() {
-                position += speed * direction;    
+                position += speed * direction;
                 console.log("new position: " + position);
-        
+
                 if(position > boardWidth) {
                     direction = -1;
                 }
-    
+
                 if(position < 0){
                     direction = 1;
-                    
+
                 }
-    
-                box.css('left', position);  
+
+                box.css('left', position);
             }
 
 
@@ -74,7 +74,7 @@
     			box.text(points);
     			position = 0;
     			speed +=5;
-				
+
 			}
 
 
@@ -82,7 +82,7 @@
 			setInterval(update, 30);
 			// this executes the handleBoxClick function code every time the box is clicked on
 			box.on('click', handleBoxClick);
-	
+
 		})();
 	</script>
 </body>
